@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>{{title|title}}</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
-    <h1>{{month|title}}'s Challenge</h1>
-    {% if text is not None %}
-    <h2>{{text}}</h2>
-    {% else %}
-    <p>No content here!</p>
-    {% endif %}
-
-    <script src="" async defer></script>
-  </body>
-</html>
+<!-- prettier-ignore -->
+{% extends "base.html" %}
+{% load static %} 
+{% block page_title %}
+{{title|title}} 
+{% endblock %} 
+{% block content %} 
+{% include "challenges/includes/header.html" %}
+<h1>{{month|title}}'s Challenge</h1>
+<!-- prettier-ignore -->
+{% block css_files %} <link rel="stylesheet" href="{% static "/challenges/challenge.css" %}"> {% endblock %} {% if text is not None %}
+<h2>{{text}}</h2>
+{% else %}
+<p class="fallback">No content here!</p>
+{% endif %} {% endblock %}

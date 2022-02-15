@@ -1,8 +1,7 @@
 from turtle import forward
 from urllib import response
-from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse
 
 import challenges
@@ -13,7 +12,13 @@ monthly_challenges = {
     "march": "march text",
     "april": "april text",
     "may": "may text",
-    "june": None
+    "june": "june text",
+    "july": "july text",
+    "aug": "aug text",
+    "sept": "sept text",
+    "oct": "oct text",
+    "nov": "nov text",
+    "dec": None
 }
 
 
@@ -56,4 +61,4 @@ def monthly_challenge(request, month):
             "text": challenge_text
         })
     except:
-        return HttpResponseNotFound("<h1>This month is not supported!</h1>")
+        raise Http404()
